@@ -1,38 +1,32 @@
-import "./styles/game-board.css";
-import React from "react";
-import { Images } from "../assets/images";
 
-const initialFishes = [
-  {
-    name: "trout",
-    url: Images.trout,
-  },
-  {
-    name: "salmon",
-    url: Images.salmon,
-  },
-  {
-    name: "tuna",
-    url: Images.tuna,
-  },
-  {
-    name: "shark",
-    url: Images.shark,
-  },
-];
+import "./styles/game-board.css";
+import React, {useContext} from "react";
+import { userInputContext } from "../UserInputProvider";
 
 // ! Do not add props to gameboard
 export const GameBoard = () => {
-  const nextFishToName = initialFishes[0];
+
+
+  // const [userInput, setUserInput] = useContext(userInputContext)
+  // const input = userInput
+const obj = useContext(userInputContext)
+
+const input = obj.userInput
+const answersLeft = obj.answersLeft
+const nextFishToName = answersLeft[0];
+if(answersLeft.length < 1){
+ return null
+}
 
   return (
     <div id="game-board">
+      {input}
       <div id="fish-container">
         <img src={nextFishToName.url} alt={nextFishToName.name} />
       </div>
-      <form id="fish-guess-form" onSubmit={() => {}}>
+      <form id="fish-guess-form" onSubmit={obj.handleSubmit}>
         <label htmlFor="fish-guess">What kind of fish is this?</label>
-        <input type="text" name="fish-guess" />
+        <input  onChange={obj.handleInput} value={input} type="text" name="fish-guess" />
         <input type="submit" />
       </form>
     </div>
