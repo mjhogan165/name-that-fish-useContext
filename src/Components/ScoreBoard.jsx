@@ -1,20 +1,12 @@
 import "./styles/score-board.css";
-import React, {useContext} from "react";
-import { userInputContext } from "../App";
+import React, { useContext } from "react";
+import { userInputContext } from "./UserInputProvider";
 //  Where the score is presented
-
 
 // ! do not add props to scoreboard
 export const ScoreBoard = () => {
-
-  const obj = useContext(userInputContext);
-
-  const incorrectCount = obj.incorrectCount;
-
-  const answersLeft = obj.answersLeft;
-  console.log(answersLeft);
-  const correctCount = obj.correctCount;
-
+  const { incorrectCount, answersLeft, correctCount } =
+    useContext(userInputContext);
 
   return (
     <div id="score-board">
