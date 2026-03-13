@@ -1,6 +1,7 @@
 - To set up this repository run `npm i`
 - To spin this app up run  `npm run dev`
 
+![name that fish](https://github.com/user-attachments/assets/ee6fc193-62c4-48a3-9fe3-f897c36be95e)
 
 
 ### Project Requirements:
